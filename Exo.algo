@@ -1,0 +1,39 @@
+ALGORITHM analyse_phrase
+VAR
+    caractere: CARACTERE  
+    longueur, mots, voyelles: ENTIER  
+    precedent_espace: BOOLEEN  
+BEGIN
+    longueur ← 0
+    mots ← 0
+    voyelles ← 0
+    precedent_espace ← VRAI  
+
+    ECRIRE "Entrez une phrase (se terminant par un point) :"
+
+    FAIRE
+        LIRE caractere
+        
+        SI caractere ≠ "." ALORS
+            longueur ← longueur + 1
+        FIN_SI
+        
+        SI caractere = " " ALORS
+            precedent_espace ← VRAI
+        SINON SI precedent_espace ALORS
+            mots ← mots + 1
+            precedent_espace ← FAUX
+        FIN_SI
+        
+        SI caractere = "a" OU caractere = "e" OU caractere = "i" OU caractere = "o" OU caractere = "u" ALORS
+            voyelles ← voyelles + 1
+        SINON SI caractere = "A" OU caractere = "E" OU caractere = "I" OU caractere = "O" OU caractere = "U" ALORS
+            voyelles ← voyelles + 1
+        FIN_SI
+
+    TANT QUE caractere ≠ "."  
+    
+    ECRIRE "Longueur de la phrase :", longueur
+    ECRIRE "Nombre de mots :", mots
+    ECRIRE "Nombre de voyelles :", voyelles
+END
